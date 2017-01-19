@@ -13,6 +13,8 @@ class Hangman():
     wordList = [""]
     def _init_(self):
 
+#python should be writing to a standard buffer, flush makes sure it's empty before you use it again
+#was getting an error so did a find/replace and added it everywhere--probably redundant 
         print("Hangman: Stick man's life depends on you!", flush = True)
         print("Are you ready to play?", flush = True)
         print("If you are ready to play enter: 1", flush = True)
@@ -197,7 +199,7 @@ class Hangman():
             print ("|             ", flush = True)
             print ("The noose tightens around his neck!", flush = True)
             print ("HIS LIFE IS ON YOU, MONSTER!.", flush = True)
-            print ("GAME OVER!", flush = True)
+            print ("YOU LOOSE -- GAME OVER!", flush = True)
             self._init_()
 
     def progress_updater(self, guess, theWord, progress):
