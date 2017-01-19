@@ -9,20 +9,14 @@ class Hangman():
     #it is automatically called when you create a new instance of a class
     #within that function, the newly created object is assigned to the parameter self
 
-    print("Is this is a thing?")
-
-
+    #print("Is this is a thing?")
     wordList = [""]
-
     def _init_(self):
-
-
 
         print("Hangman: Stick man's life depends on you!", flush = True)
         print("Are you ready to play?", flush = True)
         print("If you are ready to play enter: 1", flush = True)
         print("If you can't handle the pressure: 2", flush = True)
-
         usr_input = input()
 
         if usr_input == '1':
@@ -54,12 +48,9 @@ class Hangman():
         #with open(WORDLIST_FILENAME, 'r') as f:
         #    wordList = [line.strip() for line in f]
         print("",len(wordList),"words loaded")
-
         self.wordList = wordList
 
         return wordList
-
-
 
     def chooseWord(self,wordList):
 
@@ -68,16 +59,12 @@ class Hangman():
         #print(self.wordList[0])
         return x
 
-
-
-
-
     def start_game(self):
         print("You have the chance to save this sorry soul", flush = True)
         print("If you make 6 wrong guesses, we hang the man!", flush = True)
         self.core_game()
 
-    #TODO: this is my attempt at seeing if they guessed the word -- broken...
+
     def is_word_guessed(self, theWord, lettersUsed):
 
         #theWord: string, the word the user is guessing
@@ -107,10 +94,6 @@ class Hangman():
         progress = ["?","?","?","?","?"]
         wordGuessed = False
 
-        correctAnswer = ""
-
-
-
 
         while guesses < 6 and wordGuessed is False:
             guess = input("Guess a letter: ")
@@ -123,13 +106,10 @@ class Hangman():
                 #add guess to lettersUsed
                 lettersUsed += guess + ","
 
-#this is where you win the game.......
-                #TODO:This doesn't work/fix it
+                #this is where you win the game.......
                 wordGuessed = self.is_word_guessed(theWord,lettersUsed)
                 if wordGuessed == True:
-                #if correctAnswer == theWord:
                     guesses = 99
-
 
                 #call hangman graphic, sending # of guesses
                 self.hangman_graphic(guesses)
@@ -138,10 +118,6 @@ class Hangman():
                 print("Progress: " + self.progress_updater(guess,theWord,progress))
                 #display letters used
                 print("Letter used: " + lettersUsed)
-        #call hangman graphic, sending # of guesses
-
-
-
 
 
             #if their guess is incorrect
@@ -157,7 +133,6 @@ class Hangman():
                 print("You have already guessed that letter!")
             else:
                 print("Is that even a letter? Try again...", flush = True)
-
 
 
     def hangman_graphic(self, guesses):
@@ -212,6 +187,7 @@ class Hangman():
             print ("|      |                    ", flush = True)
             print ("|     / \                   ", flush = True)
             print("CONGRATULATIONS YOU FREAKING WON!")
+            self._init_()
         else:
             print ("________      ", flush = True)
             print ("|      |      ", flush = True)
@@ -222,7 +198,7 @@ class Hangman():
             print ("The noose tightens around his neck!", flush = True)
             print ("HIS LIFE IS ON YOU, MONSTER!.", flush = True)
             print ("GAME OVER!", flush = True)
-            self.__init__()
+            self._init_()
 
     def progress_updater(self, guess, theWord, progress):
         i = 0
@@ -239,6 +215,4 @@ class Hangman():
 
 
 game = Hangman()
-
-print ("Hello jerkface")
-game.start_game()
+game._init_()
